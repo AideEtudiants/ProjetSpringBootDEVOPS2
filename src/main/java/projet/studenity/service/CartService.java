@@ -12,4 +12,5 @@ public interface CartService {
     public boolean deleteAllFromCart(int idUser);
     public Integer totalPrice(int idUser);
     public List<Product> listProduct(int idUser);
+    //hijh
 }
