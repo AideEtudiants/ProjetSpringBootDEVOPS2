@@ -30,8 +30,8 @@ public class ProductController {
 	}
 
 	@PostMapping(value="/searchProduct")
-	public List<Product> findProductByName(@RequestBody String name) {
-		List<Product> listProduct = productService.findProductByName(name);
+	public List<Product> findProductBy(@RequestBody String chaine) {
+		List<Product> listProduct = productService.findProductBy(chaine);
 		return listProduct;
 	}
 

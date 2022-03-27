@@ -12,6 +12,7 @@ import projet.studenity.service.ProductService;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
@@ -33,12 +34,18 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> findProductByName(String name) {
+    public List<Product> findProductBy(String chaine) {
         List<Product> listProduct = productRepo.findAll();
         List<Product> listProductWithName = new ArrayList<>();
         for(Product product:listProduct){
-            if(product.getName().equalsIgnoreCase(name)){
+            if(product.getName().equalsIgnoreCase(chaine)){
                 listProductWithName.add(product);
+            }else
+            if(product.getDescription().equalsIgnoreCase(chaine)){
+                listProductWithName.add(product);
+            }else if(product.getStartDate().toString().equalsIgnoreCase(chaine)){
+                listProductWithName.add(product);
+
             }
         }
         if(listProductWithName.isEmpty()) return null;

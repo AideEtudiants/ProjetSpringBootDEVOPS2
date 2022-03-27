@@ -30,8 +30,8 @@ public class HomePageController {
     }
 
     @PostMapping(value="/")
-    public List<Product> findProductByName(@RequestBody String name){   //Front va envoyer un String de moteur de recherche a Back
-        return productService.findProductByName(name);  //Back renvoie une liste Product qui approprie.
+    public List<Product> findProductBy(@RequestBody String chaine){   //Front va envoyer un String de moteur de recherche a Back
+        return productService.findProductBy(chaine);  //Back renvoie une liste Product qui approprie.
     }
 
 }

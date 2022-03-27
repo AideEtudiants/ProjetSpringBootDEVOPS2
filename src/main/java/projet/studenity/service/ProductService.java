@@ -13,7 +13,7 @@ public interface ProductService {
     public abstract boolean deleteProduct(int id);
     public abstract List<Product> getProducts();
     public Product findProductById(int id);
-    public List<Product> findProductByName(String firstName);
+    public List<Product> findProductBy(String chaine);
     public boolean reserveProduct(int id);
     public List<Product> findProductByCategory(int idCategory);
     public List<Product> listProductByUser(int idUser);
