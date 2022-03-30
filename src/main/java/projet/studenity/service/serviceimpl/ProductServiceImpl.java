@@ -45,7 +45,6 @@ public class ProductServiceImpl implements ProductService {
                 listProductWithName.add(product);
             }else if(product.getStartDate().toString().equalsIgnoreCase(chaine)){
                 listProductWithName.add(product);
-
             }
         }
         if(listProductWithName.isEmpty()) return null;
