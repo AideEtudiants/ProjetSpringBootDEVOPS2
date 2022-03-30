@@ -52,7 +52,17 @@ public class UserServiceImpl implements UserService {
         if(listUserByFirstName.isEmpty()) return null;
         return listUser;
     }
+    @Override
+    public User findUserByEmail(String email) {
+        List<User> listUser = userRepo.findAll();
+        for(User user:listUser){
+            if(user.getEmail().equalsIgnoreCase(email)){
+                return user;
+            }
+        }
+        return null;
 
+    }
     @Override
     public boolean createUser(User user) {
         List<User> userList = userRepo.findAll();
@@ -71,5 +81,17 @@ public class UserServiceImpl implements UserService {
             userRepo.save(user);
         }catch(Exception e){return false;}
         return true;
+    }
+
+
+    @Override
+    public boolean login(String username, String password){
+        List<User> listUser = userRepo.findAll();
+        for(User user:listUser){
+            if(user.getEmail().equalsIgnoreCase(username) && user.getPassword().equals(password)){
+                return true;
+            }
+        }
+       return false;
     }
 }

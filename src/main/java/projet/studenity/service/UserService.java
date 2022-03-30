@@ -13,4 +13,7 @@ public interface UserService {
     public abstract List<User> getUsers();
     public User findUserById(int id);
     public List<User> findUserByFirstName(String firstName);
+    public abstract boolean login(String email,String password );
+    public abstract User findUserByEmail(String email);
+
 }
