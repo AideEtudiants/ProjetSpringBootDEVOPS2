@@ -74,8 +74,8 @@ public class UserController {
 
 		userRepository.save(user);
 	}
-	@PostMapping("/user/login")
-	public User login(@RequestBody String email ,@RequestBody String password) {
+	@GetMapping("/user/login/{email}/{password}")
+	public User login(@PathVariable("email") String email ,@PathVariable("password") String password) {
 		if (userService.login(email,password) == true){
 			return userService.findUserByEmail(email);
 		}
