@@ -66,12 +66,10 @@ public class ClassController {
 
 
     @GetMapping(value="/test")
-    public
-    List<String> test() {
-//        Class classes = new Class();
-//        classes.setDescription("CC prepare");
-//        classes.setName("Gestion de projet");
-//        return classService.listClassByUser(4);
-        return classService.listNameUserByClass(5);
+    public boolean test() {
+        Class classes = new Class();
+        classes.setDescription("CC prepare");
+        classes.setName("Un cours de Programmation et Backend");
+        return classService.addClass(classes);
     }
 }

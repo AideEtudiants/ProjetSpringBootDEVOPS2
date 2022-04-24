@@ -27,6 +27,7 @@ public class User {
 	private String address;
 	@Column(name="POSTAL_CODE")
 	private int postalCode;
+	private String interest;
 
 	public int getId() {
 		return id;
@@ -122,6 +123,14 @@ public class User {
 
 	public void setPostalCode(int postalCode) {
 		this.postalCode = postalCode;
+	}
+
+	public String getInterest() {
+		return interest;
+	}
+
+	public void setInterest(String interest) {
+		this.interest = interest;
 	}
 
 	@Override

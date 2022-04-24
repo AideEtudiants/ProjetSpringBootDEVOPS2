@@ -4,9 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import projet.studenity.model.Answer;
 import projet.studenity.model.Forum;
+import projet.studenity.model.Notification;
+import projet.studenity.model.User;
 import projet.studenity.repository.AnswerRepository;
 import projet.studenity.repository.ForumRepository;
+import projet.studenity.repository.NotificationRepository;
 import projet.studenity.service.ForumAnswerService;
+import projet.studenity.service.UserService;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,6 +23,12 @@ public class ForumAnswerServiceImpl implements ForumAnswerService {
 
     @Autowired
     AnswerRepository answerRepo;
+
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    NotificationRepository notiRepo;
 
     @Override
     public Forum findForumById(int idForum) {
@@ -63,6 +73,17 @@ public class ForumAnswerServiceImpl implements ForumAnswerService {
             answer.setStartDate(date);
             if(answer.getAnswer().equalsIgnoreCase("")){return false;}
             answerRepo.save(answer);
+
+            //Envoie noti quand y a qqn reponse au forum
+            Forum forum = findForumById(answer.getIdForum());
+            User user = userService.findUserById(answer.getIdUser());
+            Notification noti = new Notification();
+            noti.setIdUser(forum.getIdUser());
+            noti.setTypeNoti(2); // 1: Cours / 2: Forum
+            noti.setMessage(user.getFirstName() + " a répondu à votre question");
+            //stocker id forum pour afficher si utilisateur clique sur noti
+            noti.setIdTempo(forum.getId());
+            notiRepo.save(noti);
         }catch (Exception e){
             return false;
         }
@@ -123,5 +144,20 @@ public class ForumAnswerServiceImpl implements ForumAnswerService {
             answerList.add(answer);
         }
         return answerList;
+    }
+
+    @Override
+    public List<Forum> findForumByKeyword(String keyword) {
+        List<Forum> forumList = getAllForums();
+        List<Forum> forumResult = new ArrayList<>();
+        for (Forum forum : forumList) {
+            String[] forumKeyword = forum.getTitle().split(" ");
+            for (int i = 0; i < forumKeyword.length; i++) {
+                if (forumKeyword[i].contains(keyword)) {
+                    forumResult.add(forum);
+                }
+            }
+        }
+        return forumResult;
     }
 }

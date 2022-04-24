@@ -58,10 +58,17 @@ public class ForumAnswerController {
         return forumAnswerService.findForumById(idForum);
     }
 
+    @GetMapping(value="/{keyword}")
+    public List<Forum> findForumByKeyword(@PathVariable("keyword")  String keyword) {
+        return forumAnswerService.findForumByKeyword(keyword);
+    }
 
-    /*@GetMapping(value="/test")
-    public List<Forum> test() {
-
-        return forumAnswerService.getAllForums();
-    }*/
+    @GetMapping(value="/test")
+    public boolean test() {
+        Answer answer = new Answer();
+        answer.setIdForum(1);
+        answer.setIdUser(4);
+        answer.setAnswer("test");
+        return forumAnswerService.addAnswerToForum(answer);
+    }
 }
