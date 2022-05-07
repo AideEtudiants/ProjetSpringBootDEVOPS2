@@ -1,17 +1,19 @@
 package projet.studenity.service.serviceimpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
-import projet.studenity.model.Answer;
-import projet.studenity.model.Forum;
-import projet.studenity.model.Notification;
-import projet.studenity.model.User;
+import projet.studenity.dao.ProductDao;
+import projet.studenity.model.*;
 import projet.studenity.repository.AnswerRepository;
 import projet.studenity.repository.ForumRepository;
 import projet.studenity.repository.NotificationRepository;
 import projet.studenity.service.ForumAnswerService;
 import projet.studenity.service.UserService;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,6 +31,9 @@ public class ForumAnswerServiceImpl implements ForumAnswerService {
 
     @Autowired
     NotificationRepository notiRepo;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     @Override
     public Forum findForumById(int idForum) {
@@ -132,18 +137,46 @@ public class ForumAnswerServiceImpl implements ForumAnswerService {
 
     @Override
     public List<Forum> getAllForums() {
-        return forumRepo.findAll();
+        //List<Forum> forums = forumRepo.findAll();
+        return jdbcTemplate.query("select * from Forum order by start_date desc ", new ForumRowMapper());
+        //return forumRepo.findAll();
+    }
+
+    private final class ForumRowMapper implements RowMapper<Forum> {
+        @Override
+        public Forum mapRow(ResultSet rs, int rowNum) throws SQLException {
+            Forum forum = new Forum();
+            forum.setId(rs.getInt("id_forum"));
+            forum.setIdUser(rs.getInt("id_user"));
+            forum.setTitle(rs.getString("title"));
+            forum.setDescription(rs.getString("description"));
+            forum.setStartDate(rs.getDate("start_date"));
+            return forum;
+        }
     }
 
     @Override
     public List<Answer> listAnswerByForum(int idForum) {
-        List<Answer> answers = answerRepo.findAll();
+        List<Answer> answers = jdbcTemplate.query("select * from Answer order by start_date desc ", new AnswerRowMapper());
         List<Answer> answerList = new ArrayList<>();
         for(Answer answer: answers){
             if(answer.getIdForum()==idForum)
             answerList.add(answer);
         }
         return answerList;
+    }
+
+    private final class AnswerRowMapper implements RowMapper<Answer> {
+        @Override
+        public Answer mapRow(ResultSet rs, int rowNum) throws SQLException {
+            Answer answer = new Answer();
+            answer.setId(rs.getInt("id_answer"));
+            answer.setIdUser(rs.getInt("id_user"));
+            answer.setIdForum(rs.getInt("id_forum"));
+            answer.setAnswer(rs.getString("answer"));
+            answer.setStartDate(rs.getDate("start_date"));
+            return answer;
+        }
     }
 
     @Override

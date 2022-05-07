@@ -1,6 +1,10 @@
 package projet.studenity.service;
 
 
-public interface NotificationService {
+import projet.studenity.model.Notification;
 
+import java.util.List;
+
+public interface NotificationService {
+    List<Notification> getListNotification(int idUser);
 }
