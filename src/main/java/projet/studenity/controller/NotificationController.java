@@ -16,7 +16,7 @@ public class NotificationController {
     private NotificationService notiService;
 
     @PostMapping(value="/all")
-    public List<Notification> deleteFromCart(@RequestBody int idUser){
+    public List<Notification> getNoti(@RequestBody int idUser){
         return notiService.getListNotification(idUser);
     }
 
