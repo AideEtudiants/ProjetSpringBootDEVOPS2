@@ -15,8 +15,8 @@ public class NotificationController {
     @Autowired
     private NotificationService notiService;
 
-    @PostMapping(value="/all")
-    public List<Notification> getNoti(@RequestBody int idUser){
+    @GetMapping(value="/all/{idUser}")
+    public List<Notification> getNoti(@PathVariable("idUser")int idUser){
         return notiService.getListNotification(idUser);
     }
 
