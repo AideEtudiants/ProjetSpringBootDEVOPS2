@@ -19,11 +19,14 @@ public class ClassController {
     @Autowired
     private ClassService classService;
 
-    @PostMapping(value="/listClassByUser")
-    public List<Class> listClassByUser(@RequestBody int idUser){
+    @GetMapping(value="/listClassByUser/{idUser}")
+    public List<Class> listClassByUser(@PathVariable ("idUser")  int idUser ){
         return classService.listClassByUser(idUser);
     }
-
+    @GetMapping(value="/listClassByUserCreator/{idUser}")
+    public List<Class> listClassByUserCreator(@PathVariable ("idUser") int idUser){
+        return classService.listClassByUserCreator(idUser);
+    }
     @PostMapping(value="/classById")
     public Class findClassById(@RequestBody int idClass){return classService.findClassById(idClass);}
 

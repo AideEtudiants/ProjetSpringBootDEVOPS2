@@ -123,19 +123,24 @@ public class ClassServiceImpl implements ClassService {
     @Override
     public List<Class> listClassByUser(int idUser) {
         List<ClassUser> classUsers = classUserRepo.findAll();
-        List<Class> listClasses = classRepo.findAll();
         List<Class> classes = new ArrayList<>();
         for(ClassUser classUser: classUsers){
             if(classUser.getUserId() == idUser){
                 classes.add(findClassById(classUser.getClassId()));
             }
         }
-        for(Class c:listClasses){
-            if(c.getUserId()==idUser){
-                classes.add(c);
+        if(classes.isEmpty()) return null;
+        return classes;
+    }
+    @Override
+    public List<Class> listClassByUserCreator(int idUser) {
+        List<Class> listClasses = classRepo.findAll();
+        List<Class> classes = new ArrayList<>();
+        for(Class classUserCreator: listClasses){
+            if(classUserCreator.getUserId() == idUser){
+                classes.add(classUserCreator);
             }
         }
-
         if(classes.isEmpty()) return null;
         return classes;
     }
