@@ -27,8 +27,8 @@ public class ClassController {
     public List<Class> listClassByUserCreator(@PathVariable ("idUser") int idUser){
         return classService.listClassByUserCreator(idUser);
     }
-    @PostMapping(value="/classById")
-    public Class findClassById(@RequestBody int idClass){return classService.findClassById(idClass);}
+    @GetMapping(value="/classById/{idClass}")
+    public Class findClassById(@PathVariable ("idClass") int idClass){return classService.findClassById(idClass);}
 
     @PostMapping(value="/deleteUserFromClass")
     public boolean deleteUserFromClass(@RequestBody ClassUser classUser){
