@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
-import projet.studenity.dao.ProductDao;
 import projet.studenity.model.*;
 import projet.studenity.repository.AnswerRepository;
 import projet.studenity.repository.ForumRepository;
@@ -15,7 +14,6 @@ import projet.studenity.service.UserService;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service

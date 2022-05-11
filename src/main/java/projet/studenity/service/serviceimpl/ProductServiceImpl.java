@@ -3,17 +3,12 @@ package projet.studenity.service.serviceimpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import projet.studenity.dao.ProductDao;
-import projet.studenity.model.Cart;
 import projet.studenity.model.Product;
-import projet.studenity.repository.CartRepository;
 import projet.studenity.repository.ProductRepository;
 import projet.studenity.repository.UserRepository;
 import projet.studenity.service.ProductService;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

@@ -9,12 +9,10 @@ import projet.studenity.model.User;
 import projet.studenity.repository.ClassRepository;
 import projet.studenity.repository.ClassUserRepository;
 import projet.studenity.repository.NotificationRepository;
-import projet.studenity.repository.UserRepository;
 import projet.studenity.service.ClassService;
 import projet.studenity.service.UserService;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service

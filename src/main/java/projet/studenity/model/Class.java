@@ -1,7 +1,6 @@
 package projet.studenity.model;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name="CLASS")

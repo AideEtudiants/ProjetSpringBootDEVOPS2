@@ -2,7 +2,6 @@ package projet.studenity.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import projet.studenity.model.Cart;
 import projet.studenity.model.Notification;
 import projet.studenity.service.NotificationService;
 

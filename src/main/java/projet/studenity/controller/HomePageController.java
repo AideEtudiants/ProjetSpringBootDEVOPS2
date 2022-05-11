@@ -19,11 +19,6 @@ public class HomePageController {
     @Autowired
     HomePageService homePageService;
 
- /*   @GetMapping(value="/{name}")
-    public List<Product> findProductByName(@PathVariable("name") String name){
-        return productService.findProductByName(name);
-    }*/
-
     @GetMapping(value="/homepage") //test
     public List<Product> getProduct(){
         return productDao.getAll();

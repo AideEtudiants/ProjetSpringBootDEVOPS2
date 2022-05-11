@@ -1,9 +1,5 @@
 package projet.studenity.service;
-
-import projet.studenity.model.Product;
 import projet.studenity.model.User;
-
-import java.util.Collection;
 import java.util.List;
 
 public interface UserService {

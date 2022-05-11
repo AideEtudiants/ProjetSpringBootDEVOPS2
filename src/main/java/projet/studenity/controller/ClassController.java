@@ -4,11 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import projet.studenity.model.Class;
 import projet.studenity.model.ClassUser;
-import projet.studenity.model.User;
 import projet.studenity.service.ClassService;
-
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @RestController

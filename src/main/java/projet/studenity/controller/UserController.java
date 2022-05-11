@@ -7,9 +7,6 @@ import projet.studenity.dao.UserDao;
 import projet.studenity.model.User;
 import projet.studenity.repository.UserRepository;
 import projet.studenity.service.UserService;
-
-
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
