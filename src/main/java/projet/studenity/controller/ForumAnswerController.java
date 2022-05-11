@@ -53,8 +53,8 @@ public class ForumAnswerController {
     public List<Answer> listAnswerByForum(@PathVariable("idForum")  int idForum) {
         return forumAnswerService.listAnswerByForum(idForum);
     }
-    @GetMapping(value="/{idForum}")
-    public Forum findForumById(@PathVariable("idForum")  int idForum) {
+    @GetMapping(value="detail/{idForum}")
+    public Forum findForumById(@PathVariable ("idForum")  int idForum) {
         return forumAnswerService.findForumById(idForum);
     }
 
