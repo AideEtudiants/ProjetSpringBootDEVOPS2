@@ -26,4 +26,18 @@ public class NotificationServiceImpl implements NotificationService {
         }
         return listNoti;
     }
+
+    @Override
+    public Boolean deleteNotification(int idNoti) {
+        List<Notification> listNoti = notiRepo.findAll();
+        for(Notification noti: listNoti){
+            if(noti.getId()==idNoti){
+                notiRepo.delete(noti);
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 }

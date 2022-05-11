@@ -19,6 +19,11 @@ public class NotificationController {
         return notiService.getListNotification(idUser);
     }
 
+    @GetMapping(value="/delete/{idNoti}")
+    public boolean deleteNoti(@PathVariable("idNoti")int idNoti){
+        return notiService.deleteNotification(idNoti);
+    }
+
     @GetMapping(value="/test")
     public List<Notification> test() {
         return notiService.getListNotification(4);
