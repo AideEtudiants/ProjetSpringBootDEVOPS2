@@ -57,7 +57,7 @@ public class ClassServiceImpl implements ClassService {
             String[] interestUser = user.getInterest().split(",");
             for(int i=0;i<nameClass.length;i++){
                 for(int j=0;j<interestUser.length;j++) {
-                    if (nameClass[i].equalsIgnoreCase(interestUser[j])) {
+                    if (nameClass[i].equalsIgnoreCase(interestUser[j]) && user.getId()!=c.getUserId()) {
                         Notification noti = new Notification();
                         noti.setIdUser(user.getId());
                         noti.setTypeNoti(1);
